@@ -1,0 +1,632 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Slack Cheat Sheet</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="f99ea2ae-51b3-4b22-8635-a8229daac05e" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="Slack%20Cheat%20Sheet%20b4c8a30aca6e4ae0ac960756608cbb1c/slack.jpg"/></div><h1 class="page-title">Slack Cheat Sheet</h1></header><div class="page-body"><h1 id="a1ea0dda-2cc2-441f-b0f6-e61fb1773bb4" class="">About slack</h1><p id="6b844481-c822-464a-ad0f-ca1b97c5618d" class="">Slack is a communication platform that thrives on organising work interactions, through channels where you can share documents, messages, to do lists, etc.</p><p id="9d454776-3c9e-4e35-ad44-8ddbd560443a" class="">Since there&#x27;s a lot of valuable information in their official website <a href="https://slack.com/intl/en-pt/help/categories/360000049063?geocode=en-pt&amp;from=home&amp;utm_medium=promo">here</a> in the form of tutorials, I&#x27;ll
+focus on few important aspects. </p><h1 id="98794e25-322f-416a-a8fa-8cfc9c73b883" class="">Managing your Workplace</h1><p id="b99b85e3-d396-48f2-bfeb-508de1d1a92d" class="">Managing a workplace can be boiled down to two aspects.</p><ul id="2cf3ecca-95c9-47cf-9b4a-ff9a46d5327b" class="toggle"><li><details open=""><summary><strong>Personalising it&#x27;s looks and organisation.</strong></summary><ul id="656d6231-a884-4cd5-9474-4d9435e7bcc5" class="toggle"><li><details open=""><summary><strong>Changing the Workplace picture:</strong></summary><p id="68d2a9a9-a946-4f48-8dd3-32395798a123" class=""><div class="indented"><p id="391c171c-0856-4411-b91d-f04b27a66507" class="">Start by selecting the Workplace you want to manage on the vertical left dock and then follow  the arrows.</p><figure id="b4c8a30a-ca6e-4ae0-ac96-0756608cbb1c" class="image"><a href="Slack%20Cheat%20Sheet%20b4c8a30aca6e4ae0ac960756608cbb1c/Screenshot_2021-02-05_at_00.36.11.png"><img style="width:672px" src="Slack%20Cheat%20Sheet%20b4c8a30aca6e4ae0ac960756608cbb1c/Screenshot_2021-02-05_at_00.36.11.png"/></a></figure><p id="049d9b56-3fed-440f-a804-702310ecd00c" class="">Select <strong><em>Workspace Icon.</em></strong></p><figure id="a178162b-eff5-4c69-820d-e0f1080d6b6c" class="image"><a href="Slack%20Cheat%20Sheet%20b4c8a30aca6e4ae0ac960756608cbb1c/Screenshot_2021-02-05_at_00.44.23.png"><img style="width:3584px" src="Slack%20Cheat%20Sheet%20b4c8a30aca6e4ae0ac960756608cbb1c/Screenshot_2021-02-05_at_00.44.23.png"/></a></figure><p id="a19b7692-dfb2-4ed9-8c8d-0265e81f478c" class="">Press <strong><em>Choose File </em></strong>and then<strong><em> Upload Icon.</em></strong></p><p id="0fdd3d76-049e-4663-ad42-53e24339a5dc" class="">
+</p><figure id="9fa24322-6388-4c3d-a5e7-c6e6377726f6" class="image"><a href="Slack%20Cheat%20Sheet%20b4c8a30aca6e4ae0ac960756608cbb1c/Screenshot_2021-02-05_at_00.48.58.png"><img style="width:3584px" src="Slack%20Cheat%20Sheet%20b4c8a30aca6e4ae0ac960756608cbb1c/Screenshot_2021-02-05_at_00.48.58.png"/></a></figure></div></p></details></li></ul><ul id="243920e8-2707-46d5-961e-e5d30525e9f5" class="toggle"><li><details open=""><summary><strong>Adding a channel:</strong></summary><figure id="9f0835e5-665c-4c32-b91c-a21f9d845d72" class="image"><a href="Slack%20Cheat%20Sheet%20b4c8a30aca6e4ae0ac960756608cbb1c/Screenshot_2021-02-05_at_00.55.15.png"><img style="width:2642px" src="Slack%20Cheat%20Sheet%20b4c8a30aca6e4ae0ac960756608cbb1c/Screenshot_2021-02-05_at_00.55.15.png"/></a></figure><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css')</style><pre id="936d97b7-c721-417e-812b-2188e44bcd23" class="code"><code>making the channel <span class="token keyword">private</span><span class="token punctuation">,</span> means that only people you directly add have
+access to it<span class="token punctuation">.</span></code></pre></details></li></ul><ul id="eba53ec2-fccd-42ce-88bd-120817f9093f" class="toggle"><li><details open=""><summary><strong>Renaming or Removing a channel:</strong></summary><p id="479d856a-a9d6-4fa8-b80a-413bc441aec5" class="">Left click the channel in which you want the perform the operation.</p><figure id="ecf142d7-e799-402c-bab3-dbc2f81a7b84" class="image"><a href="Slack%20Cheat%20Sheet%20b4c8a30aca6e4ae0ac960756608cbb1c/Screenshot_2021-02-05_at_01.01.55.png"><img style="width:2642px" src="Slack%20Cheat%20Sheet%20b4c8a30aca6e4ae0ac960756608cbb1c/Screenshot_2021-02-05_at_01.01.55.png"/></a></figure><p id="309783d1-dc36-4daf-8891-aa5d8bfd2d3c" class="">Select the operation you wish to carry out.</p><figure id="5f367f5a-7875-46d1-89df-84522b98bdd4" class="image"><a href="Slack%20Cheat%20Sheet%20b4c8a30aca6e4ae0ac960756608cbb1c/Screenshot_2021-02-05_at_01.04.13.png"><img style="width:2642px" src="Slack%20Cheat%20Sheet%20b4c8a30aca6e4ae0ac960756608cbb1c/Screenshot_2021-02-05_at_01.04.13.png"/></a></figure></details></li></ul></details></li></ul><ul id="1795d558-2885-4456-af23-dfcf1efc0578" class="toggle"><li><details open=""><summary><strong>Managing the participants.</strong></summary><ul id="6410b4fe-eae0-4390-a162-0cd53bb9eb45" class="toggle"><li><details open=""><summary><strong>Adding someone to the workplace:</strong></summary><p id="1e856698-e25c-4675-b012-c31f0ac3b15d" class="">There are two ways to add someone to your Workplace. Either with through their email or with an <strong><em>invite link.</em></strong></p><p id="97ba52af-955e-4a19-9d93-cdc9b68f5634" class="">Start by selecting the Workplace you want to manage on the vertical left dock and then follow  the arrows.</p><figure id="70cdcfb4-a366-4be8-8f23-22953edfaf35" class="image"><a href="Slack%20Cheat%20Sheet%20b4c8a30aca6e4ae0ac960756608cbb1c/Screenshot_2021-02-05_at_01.10.39.png"><img style="width:2642px" src="Slack%20Cheat%20Sheet%20b4c8a30aca6e4ae0ac960756608cbb1c/Screenshot_2021-02-05_at_01.10.39.png"/></a></figure><p id="4ade74b8-67bd-463a-9ca8-c0c36cd3258f" class="">You&#x27;ll be presented with the two options.</p><figure id="f89eda96-764c-4240-a427-ff8a82da2815" class="image"><a href="Slack%20Cheat%20Sheet%20b4c8a30aca6e4ae0ac960756608cbb1c/Screenshot_2021-02-05_at_01.14.26.png"><img style="width:2642px" src="Slack%20Cheat%20Sheet%20b4c8a30aca6e4ae0ac960756608cbb1c/Screenshot_2021-02-05_at_01.14.26.png"/></a></figure></details></li></ul><ul id="5c6f124f-3c65-438b-a1cd-bc17afab1e2d" class="toggle"><li><details open=""><summary><strong>Adding someone to a SPECIFIC channel:</strong></summary><p id="62843841-8c1c-4618-a414-069ae4989e4e" class="">To add someone to a specific channel select that channel and proceed as follows.</p><figure id="e3408b06-b618-482b-83c9-c231494cced4" class="image"><a href="Slack%20Cheat%20Sheet%20b4c8a30aca6e4ae0ac960756608cbb1c/Screenshot_2021-02-05_at_01.20.51.png"><img style="width:2642px" src="Slack%20Cheat%20Sheet%20b4c8a30aca6e4ae0ac960756608cbb1c/Screenshot_2021-02-05_at_01.20.51.png"/></a></figure><p id="543a9cea-4c65-4d6c-9b18-1a86d309c414" class="">You&#x27;ll be asked to select a Workplace member or to send an invite by email.</p><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css')</style><pre id="04735535-c44c-4896-bc49-e603c30b9bf8" class="code"><code>By <span class="token keyword">default</span> everyone will be included on all channels<span class="token punctuation">.</span></code></pre></details></li></ul><ul id="52c4ba9b-ed8f-49ea-8391-641dbd946db0" class="toggle"><li><details open=""><summary><strong>Removing someone from the workplace:</strong></summary></details></li></ul><ul id="1e72315b-1c52-4672-841f-06f0960d0b2d" class="toggle"><li><details open=""><summary><strong>Removing someone from a SPECIFIC channel:</strong></summary></details></li></ul><figure id="371da632-1b45-48a7-accb-5784b81c7444" class="image"><a href=""><img src=""/></a></figure><p id="028b7853-3eaa-4cb5-b1b4-59df18f20a0f" class="">
+</p></details></li></ul><h1 id="cd7f633e-6c48-4218-b6fc-5948075915a8" class="">Tips &amp; Tricks</h1><h3 id="b3a00a88-8d49-48ed-a54d-b06844c4b97c" class="">Polling</h3><ul id="d79e3592-0da0-44e6-a074-731f42c50d39" class="toggle"><li><details open=""><summary></summary><p id="5696f418-eaf3-4ae2-b931-4cf8c153e2a4" class="">Polling is an effective way of determining the most common answer to a given question.
+This can be achieved through the channels reaction mecanism:</p></details></li></ul><h3 id="55e5ee8f-c6f1-49c4-bb6c-22ed0fe70f54" class="">Replying in threads</h3><ul id="9b49117e-a5bc-4f63-be08-200b5237b84a" class="toggle"><li><details open=""><summary></summary><p id="ed6fc89d-d4ec-406b-9edb-ebfc8fcf5d8e" class="">A good practice to not clogger a channel with messages is....</p></details></li></ul><h3 id="18015047-410b-492c-9a29-53bd4125bc49" class="">Starting a call</h3><ul id="00a5ca3a-5a5d-47cd-b3e9-382d48d01b9b" class="toggle"><li><details open=""><summary></summary><p id="f1f76392-8cda-4a16-8b66-8376b1bed484" class="">You can start a call by doing</p></details></li></ul><h3 id="c2bba028-e424-461e-bf3e-aa1509eee03b" class="">News Channel</h3><ul id="51ee503c-4dd8-474e-becf-c96fd5b5372d" class="toggle"><li><details open=""><summary></summary></details></li></ul></div></article></body></html>
